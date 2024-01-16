@@ -172,7 +172,7 @@ app.post('/submit', uploadHandler.single('storyImage'), async (req, res) => {
     if (!storyTitle || !storyContent || !storyImage) {
         res.status(400).render('message', {
             title: "400",
-            detail: "輸入欄不可為空"
+            detail: "輸入欄（包括圖片）不可為空！"
         });
     } else {
         const insertQuery = 'INSERT INTO stories (title, content, image_path) VALUES ($1, $2, $3) RETURNING id';
@@ -181,14 +181,14 @@ app.post('/submit', uploadHandler.single('storyImage'), async (req, res) => {
             const result = await pool.query(insertQuery, values);
             console.log(`A story has been added with id ${result.rows[0].id}`);
             res.render('message', {
-                title: "感謝您的分享",
+                title: "感謝您的分享！",
                 detail: ""
             });
         } catch (err) {
             console.error(err.message);
             res.status(500).render('message', {
                 title: "500",
-                detail: "儲存故事時發生錯誤"
+                detail: "儲存故事時發生錯誤，請再試一次。"
             });
         }
     }  
@@ -197,12 +197,12 @@ app.post('/submit', uploadHandler.single('storyImage'), async (req, res) => {
     if (err instanceof multer.MulterError && err.code === 'LIMIT_FILE_SIZE') {
         return res.status(413).render('message', {
             title: "413",
-            detail: "檔案過大（大小限制為10MB）"
+            detail: "圖片檔案過大。（大小限制為10MB）"
         });
     } else {
         return res.status(400).render('message', {
             title: "400",
-            detail: "上傳檔案發生問題，可能是格式不相容"
+            detail: "上傳圖片發生問題，可能是格式不相容。（請使用jpg、jpeg、png、gif格式）"
         });
     }
 });

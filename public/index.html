@@ -9,11 +9,13 @@
 </head>
 
 <body>
+    <div style="position: relative;">
+        <img class="wave hide-when-expand" src="/wave1.svg" style="top: 0; left: 50%; transform: translate(-50%, 0%); z-index: 1;">
+    </div>
     <header id="main-page-header" class="hide-when-expand">
-        <img id="main-page-logo" src="/logo.svg" width="65px" style="padding-top: 30px; z-index: 3;">
-        <img id="main-page-poem" src="/poem.svg" width="70px" style="padding-right: 20px; z-index: 4;">
+        <img id="main-page-logo" src="/logo.svg" width="65px" style="padding-top: 60px; z-index: 3;">
+        <img id="main-page-poem" src="/poem.svg" width="70px" style="padding-top: 30px; padding-right: 20px; z-index: 4;">
     </header>
-    <img class="wave hide-when-expand" src="/wave1.svg" style="top: 0; left: 50%; transform: translate(-50%, 0%); z-index: 1;">
     <div id="tree-container" class="container">
         <button type="button" class="button" id="go-back" onclick="zoomOut()" style="z-index: 9;">返回</button>
         <div id="spinner" style="z-index: 8;">
