@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>柳緣-故事分享</title>
+</head>
+
+<body>
+    <header>
+        <a href="/">
+            <img src="/logo.svg" width="85px" style="margin: 60px 60px 20px 60px;">
+        </a>
+    </header>
+    <img class="wave" src="/wave3.svg" style="top: 0; left: 50%; transform: translate(-50%, 0%); z-index: -1;">
+    <div class="container">
+        <p style="padding: 0 60px 0; font-size: 12px;">
+            那些歲月裡留不住的人事物，讓今日柳下的緣分，在世上某個角落或某人心中留下吧！
+        </p>
+        <form action="/submit" method="POST" enctype="multipart/form-data">
+            <section class="image-upload-section">
+                <!-- Image Input -->
+                <label for="storyImage" class="image-upload-label">
+                    <div class="image-placeholder">
+                        <img id="uploadedImage" width="100%" style="display:none;">
+                        <img id="placeholderImg" src="/photo_icon.svg" width="120px">
+                    </div>
+                </label>
+                <input type="file" id="storyImage" name="storyImage" accept=".png,.jpg,.jpeg,.gif" onchange="loadFile(event)" hidden>
+            </section>
+            <section class="title-input-section">
+                <!-- Title Input -->
+                <input type="text" placeholder="標題" name="storyTitle" maxlength="20">
+            </section>
+
+            <section class="story-input-section">
+                <!-- Story Input -->
+                <textarea placeholder="內容" name="storyContent" maxlength="1000"></textarea>
+            </section>
+        
+            <footer>
+                <button class="button" type="submit">送柳</button>
+            </footer>
+        </form>
+    </div>
+    <div style="position: relative;">
+        <img class="wave" src="/wave4.svg" style="bottom: 0; left: 50%; transform: translate(-50%, 25%); z-index: -2;">
+    </div>
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('uploadedImage');
+	        image.src = URL.createObjectURL(event.target.files[0]);
+            image.style.display = 'block';
+            placeholderImg.style.display = 'none';
+        };
+    </script>
+</body>
+
+</html>

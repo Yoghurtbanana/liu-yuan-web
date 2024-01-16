@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>柳緣-管理</title>
+</head>
+<body>
+    <header>
+        <h1>柳緣-管理頁面</h1>
+    </header>
+    <div class="container">
+        <% stories.forEach(function(story) { %>
+            <div class="admin-entry">
+                <section class="photo-section">
+                    <h2>(id: <%= story.id %>) <%= story.title %></h2>
+                    <img src="<%= story.image_path %>" alt="<%= story.title %>">
+                </section>
+                <section class="story-section">
+                    <p><%= story.content %></p>
+                </section>
+                <form action="/delete-story/<%= story.id %>" method="POST">
+                    <button class="button" type="submit">刪除</button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>
