@@ -10,7 +10,7 @@ document.querySelectorAll('.zoomable-area').forEach(area => {
         const transformOriginX = (parseFloat(posX) + parseFloat(this.getAttribute('width')) / 2) / 8.15;
         const transformOriginY = (parseFloat(posY) + parseFloat(this.getAttribute('height')) / 2) / 11.28;
         image.style.transformOrigin = `${transformOriginX}% ${transformOriginY}%`;
-        image.style.transform = `scale(3)`;
+        image.style.transform = 'scale(3)';
 
         fetchDataForBranch(id);
 
@@ -42,7 +42,8 @@ function zoomOut() {
     // Clear the query results
     document.getElementById('query-results').innerHTML = '';
 
-    document.getElementById('go-back').style.display = `none`;
+    document.getElementById('go-back').style.display = 'none';
+    document.getElementById('results-null').style.display = 'none';
 
     // Show other elements on the page
     document.querySelectorAll('.hide-when-expand').forEach(el => {
@@ -75,17 +76,20 @@ function fetchDataForBranch(branchId) {
                 resultsContainer.appendChild(resultElement);
             });
             // Create & append the decoration element
-            resultsDecoration = document.createElement('div');
+            const resultsDecoration = document.createElement('div');
             resultsDecoration.id = "results-decoration";
             resultsContainer.appendChild(resultsDecoration);
+            if (dataArray.length == 0) {
+                document.getElementById('results-null').style.display = 'block';
+            }
             // Hide the spinner and show go-back button
             document.getElementById('spinner').style.display = 'none';
-            document.getElementById('go-back').style.display = `block`;
+            document.getElementById('go-back').style.display = 'block';
         })
         .catch(error => {
             console.error('Error fetching data:', error);
             document.getElementById('spinner').style.display = 'none';
-            document.getElementById('go-back').style.display = `block`;
+            document.getElementById('go-back').style.display = 'block';
         });
 }
 

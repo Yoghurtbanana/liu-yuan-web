@@ -91,11 +91,24 @@ a {
     margin: 0 100px;
 }
 
+#results-null {
+    position: absolute;
+    display: none;
+    top: 130px;
+    border-radius: 0px 120px;
+    border: 2px solid #800303;
+    width: 100px;
+    padding: 20px;
+    text-align: center;
+    color: #800303;
+}
+
 .leaf {
     background-color: #7d1d1e;
     transform: translateX(50%);
-    padding: 20px 20px;
+    padding: 20px;
     margin-bottom: -20px;
+    min-width: 80px;
     border-radius: 0px 120px;
     border: 1px solid #800303;
     text-align: center;
