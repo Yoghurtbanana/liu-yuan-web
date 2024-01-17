@@ -87,18 +87,39 @@ a {
 #query-results {
     position: absolute;
     top: 100px;
-}
-
-#query-results div {
-    background-color: #7d1d1e;
-    margin: 10px auto;
-    padding: 20px 40px;
-    border: 1px solid #7d1d1e;
-    border-radius: 20px;
-}
-
-#query-results a {
     color: white;
+    margin: 0 100px;
+}
+
+.leaf {
+    background-color: #7d1d1e;
+    transform: translateX(50%);
+    padding: 20px 20px;
+    margin-bottom: -20px;
+    border-radius: 0px 120px;
+    border: 1px solid #800303;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.leaf:nth-child(even) {
+    transform: translateX(-50%);
+    border-radius: 120px 0px;
+}
+
+.leaf:hover {
+    background-color: #ffffff;
+    color: #7d1d1e;
+}
+
+#results-decoration {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 2px;
+    height: calc(100% + 70px);
+    background-color: #9b2d2d;
 }
 
 .zoomable-area:hover {

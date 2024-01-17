@@ -64,13 +64,20 @@ function fetchDataForBranch(branchId) {
             dataArray.forEach(data => {
                 // Create a new element for each piece of data
                 const resultElement = document.createElement('div');
-                resultElement.innerHTML = `
-                    <a href="/story/${data.id}">${data.title}</a>
-                `;
 
-                // Append the new element to the results container
+                resultElement.className = "leaf";
+                resultElement.innerHTML = `
+                    ${data.title}
+                `;
+                resultElement.onclick = function() {
+                    showStory(data.id);
+                };
                 resultsContainer.appendChild(resultElement);
             });
+            // Create & append the decoration element
+            resultsDecoration = document.createElement('div');
+            resultsDecoration.id = "results-decoration";
+            resultsContainer.appendChild(resultsDecoration);
             // Hide the spinner and show go-back button
             document.getElementById('spinner').style.display = 'none';
             document.getElementById('go-back').style.display = `block`;
@@ -78,6 +85,10 @@ function fetchDataForBranch(branchId) {
         .catch(error => {
             console.error('Error fetching data:', error);
             document.getElementById('spinner').style.display = 'none';
+            document.getElementById('go-back').style.display = `block`;
         });
 }
 
+function showStory(storyId) {
+    window.location.href = '/story/' + storyId;
+}

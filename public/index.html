@@ -10,20 +10,20 @@
 
 <body>
     <div style="position: relative;">
-        <img class="wave hide-when-expand" src="/wave1.svg" style="top: 0; left: 50%; transform: translate(-50%, 0%); z-index: 1;">
+        <img class="wave hide-when-expand" src="/wave1.svg" style="top: 0; left: 50%; transform: translate(-50%, 0%); z-index: -1;">
     </div>
     <header id="main-page-header" class="hide-when-expand">
-        <img id="main-page-logo" src="/logo.svg" width="65px" style="padding-top: 60px; z-index: 3;">
-        <img id="main-page-poem" src="/poem.svg" width="70px" style="padding-top: 30px; padding-right: 20px; z-index: 4;">
+        <img id="main-page-logo" src="/logo.svg" width="65px" style="padding-top: 60px;">
+        <img id="main-page-poem" src="/poem.svg" width="70px" style="padding-top: 30px; padding-right: 20px;">
     </header>
     <div id="tree-container" class="container">
-        <button type="button" class="button" id="go-back" onclick="zoomOut()" style="z-index: 9;">返回</button>
-        <div id="spinner" style="z-index: 8;">
+        <button type="button" class="button" id="go-back" onclick="zoomOut()" style="z-index: 5;">返回</button>
+        <div id="spinner" style="z-index: 4;">
             <div class="loader"></div>
         </div>
         <svg
         id="tree-image"
-        style="z-index: 6;"
+        style="z-index: 1;"
         data-name="tree image"
         viewBox="0 0 815 1128"
         version="1.1"
@@ -3682,10 +3682,11 @@
                 x="661.8833"
                 y="258.60608" />
         </svg>
-        <div id="query-results" style="z-index: 7;"></div>
+        <div id="query-results" style="z-index: 3;">
+        </div>
     </div>
     <div style="position: relative;">
-        <img class="wave hide-when-expand" src="/wave2.svg" style="top: 0; left: 50%; transform: translate(-50%, -80%); z-index: 2;">
+        <img class="wave hide-when-expand" src="/wave2.svg" style="top: 0; left: 50%; transform: translate(-50%, -80%); z-index: -2;">
         <p id="tree-prompt" class="hide-when-expand">請點擊樹葉，觀看其他故事</p>
     </div>
     <script src="/index.js"></script>
