@@ -1,5 +1,9 @@
 /* Base styles */
 
+html {
+    overflow: auto;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -150,6 +154,7 @@ a {
     padding: 30px;
     word-wrap: break-word;
     cursor: default;
+    overflow: scroll;
     z-index: 100;
     transition: opacity 0.2s ease;
 }
