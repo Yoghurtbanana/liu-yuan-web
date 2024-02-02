@@ -120,7 +120,7 @@ function showStory(storyImagePath, storyTitle, storyContent) {
         }
 
         const collapseTrigger = document.getElementById('collapse-trigger')
-        expandedLeaf.style.display = 'block';
+        expandedLeaf.style.display = 'flex';
         expandedLeaf.style.opacity = '0';
         collapseTrigger.style.display = 'block';
         // Use setTimeout to delay the opacity change
