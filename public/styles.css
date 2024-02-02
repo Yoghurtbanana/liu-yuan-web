@@ -11,7 +11,7 @@ body {
     font-family: 'Arial', sans-serif;
     color: #800303;
     background-color: white;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .container {
@@ -154,7 +154,7 @@ a {
     padding: 30px;
     word-wrap: break-word;
     cursor: default;
-    overflow: scroll;
+    overflow: auto;
     z-index: 100;
     transition: opacity 0.2s ease;
 }
