@@ -48,7 +48,6 @@ a {
     border: 1px solid #7d1d1e;
     border-radius: 30px;
     color: white;
-    cursor: pointer;
     font-size: 20px;
     transition: all 0.2s ease;
 }
@@ -58,10 +57,15 @@ a {
     border: 1px solid #800303;
     border-radius: 30px;
     color: #7d1d1e;
+    cursor: pointer;
 }
 
 .blur-effect {
     filter: blur(3px);
+}
+
+.double-blur-effect {
+    filter: blur(6px);
 }
 
 /* Main Page */
@@ -87,7 +91,6 @@ a {
 #query-results {
     position: absolute;
     top: 100px;
-    color: white;
     margin: 0 100px;
 }
 
@@ -104,6 +107,7 @@ a {
 }
 
 .leaf {
+    color: white;
     background-color: #7d1d1e;
     transform: translateX(50%);
     padding: 20px;
@@ -112,8 +116,7 @@ a {
     border-radius: 0px 120px;
     border: 1px solid #800303;
     text-align: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease, opacity 0s;
 }
 
 .leaf:nth-child(even) {
@@ -124,6 +127,50 @@ a {
 .leaf:hover {
     background-color: #ffffff;
     color: #7d1d1e;
+    cursor: pointer;
+}
+
+#leaf-expanded {
+    box-sizing: border-box;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    max-width: 90vw;
+    max-height: 90vh;
+    color: #800303;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0px 0px 16.5px 0px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    padding: 30px;
+    word-wrap: break-word;
+    cursor: default;
+    z-index: 100;
+    transition: opacity 0.2s ease;
+}
+
+#leaf-expanded-photo {
+    object-fit: cover;
+    margin-bottom: 20px;
+    width: 100%;
+    max-height: 40vh;
+    border-radius: 33px;
+    border: 1px solid #91101A;
+}
+
+#collapse-trigger {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    z-index: 99;
 }
 
 #results-decoration {

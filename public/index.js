@@ -66,12 +66,12 @@ function fetchDataForBranch(branchId) {
                 // Create a new element for each piece of data
                 const resultElement = document.createElement('div');
 
-                resultElement.className = "leaf";
+                resultElement.className = 'leaf';
                 resultElement.innerHTML = `
                     ${data.title}
                 `;
                 resultElement.onclick = function() {
-                    showStory(data.id);
+                    showStory(data.image_path, data.title, data.content);
                 };
                 resultsContainer.appendChild(resultElement);
             });
@@ -93,6 +93,67 @@ function fetchDataForBranch(branchId) {
         });
 }
 
-function showStory(storyId) {
-    window.location.href = '/story/' + storyId;
+function showStory(storyImagePath, storyTitle, storyContent) {
+    const treeImage = document.getElementById('tree-image');
+    const resultsDecoration = document.getElementById('results-decoration');
+    const backButton = document.getElementById('go-back');
+    if (!treeImage.classList.contains('double-blur-effect')) {
+        treeImage.classList.add('double-blur-effect');
+        resultsDecoration.classList.add('blur-effect');
+        backButton.style.pointerEvents = 'none';
+        backButton.classList.add('blur-effect');
+        document.querySelectorAll('.leaf').forEach(el => {
+            el.style.pointerEvents = 'none';
+            el.classList.add('blur-effect');
+        });
+
+        const expandedLeaf = document.getElementById('leaf-expanded');
+        if (expandedLeaf) {
+            expandedLeaf.innerHTML = `
+            <div>
+                <img id="leaf-expanded-photo" src="${storyImagePath}" alt="${storyTitle}">
+            </div>
+            <h2>${storyTitle}</h2>
+            <p style="margin-bottom: 50px;">${storyContent}</p>
+            <a class="button" href="/form-page.html">留下回憶</a>
+            `;
+        }
+
+        const collapseTrigger = document.getElementById('collapse-trigger')
+        expandedLeaf.style.display = 'block';
+        expandedLeaf.style.opacity = '0';
+        collapseTrigger.style.display = 'block';
+        // Use setTimeout to delay the opacity change
+        setTimeout(() => {
+            expandedLeaf.style.opacity = '1';
+        }, 10);
+    }
+}
+
+function hideStory() {
+    const expandedLeaf = document.getElementById('leaf-expanded');
+    if (expandedLeaf) {
+        expandedLeaf.style.opacity = '0';
+        setTimeout(() => {
+            expandedLeaf.style.display = 'none';
+        }, 200); // Same as transition duration
+    }
+    const collapseTrigger = document.getElementById('collapse-trigger');
+    if (collapseTrigger) {
+        collapseTrigger.style.display = 'none';
+    }
+    // Remove blur effects and such
+    const treeImage = document.getElementById('tree-image');
+    const resultsDecoration = document.getElementById('results-decoration');
+    const backButton = document.getElementById('go-back');
+    if (treeImage.classList.contains('double-blur-effect')) {
+        treeImage.classList.remove('double-blur-effect');
+        resultsDecoration.classList.remove('blur-effect');
+        backButton.style.pointerEvents = 'auto';
+        backButton.classList.remove('blur-effect');
+        document.querySelectorAll('.leaf').forEach(el => {
+            el.style.pointerEvents = 'auto';
+            el.classList.remove('blur-effect');
+        });
+    }
 }
