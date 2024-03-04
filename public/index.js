@@ -11,6 +11,7 @@ document.querySelectorAll('.zoomable-area').forEach(area => {
         const transformOriginY = (parseFloat(posY) + parseFloat(this.getAttribute('height')) / 2) / 11.28;
         image.style.transformOrigin = `${transformOriginX}% ${transformOriginY}%`;
         image.style.transform = 'scale(3)';
+        document.body.style.height = '2500px';
 
         fetchDataForBranch(id);
 
@@ -33,6 +34,7 @@ function zoomOut() {
     const image = document.getElementById('tree-image');
     image.style.transform = 'scale(1)';
     image.classList.toggle('blur-effect');
+    document.body.style.height = 'auto';
 
     // Enable other zoom areas
     document.querySelectorAll('.zoomable-area').forEach(zoomArea => {
